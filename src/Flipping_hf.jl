@@ -1,10 +1,14 @@
 module Flipping_hf
 
+using Reexport
 using MAT
-using DataFrames
+@reexport using DataFrames
 
 include("constants.jl")
 include("my_fun.jl")
+include("preprocess.jl")
+
+export variable_types
 
 
 end
