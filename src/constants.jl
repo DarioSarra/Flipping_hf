@@ -20,5 +20,12 @@ global const variable_types = Dict(
                             "HighLow",
                             "LickSide",
                             "timeLickIn",
-                            "Reward"]
+                            "Reward"
+                            ],
+    :removable_per_streak => ["LeftLowRewardProb",
+                                "RightLowRewardProb",
+                                "RightHighRewardProb",
+                                "Block"
+                                ]
+
     )
