@@ -37,5 +37,5 @@ function process_data(DataIndex)
     licks = Flipping_hf.flatten2(streaks,Symbol.(variable_types[:array_within_streak]))
     filetosave = joinpath(DataIndex.Saving_path[1],"licks.csv")
     FileIO.save(filetosave,licks)
-    return DataIndex, streaks
+    return DataIndex, streaks, licks
 end
