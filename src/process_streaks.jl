@@ -51,5 +51,9 @@ function process_streak(filename::String)
     df.Post_Interpoke = [x < 0 ? missing : x for x in pre_Post_Interpoke]
     pre_Travel = (df.timeEndTravel .- df.timeStartTravel) ./1000
     df.Travel = [isnan(x) ? missing : x for x in pre_Travel]
+    for x in variable_types[:array_within_streak]
+        df[!,Symbol(x)] = Flipping_hf.reshape_vars(t,x)
+    end
+
     return df
 end

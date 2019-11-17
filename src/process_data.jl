@@ -1,18 +1,14 @@
 function process_data(DataIndex)
-    #pokes = DataFrame()
     streaks = DataFrame()
     for idx=1:size(DataIndex,1)
         try
             streaks_data = Flipping_hf.process_streak(DataIndex[idx,:Bhv_path])
             if isempty(streaks)
-                #pokes = pokes_data
                 streaks = streaks_data
             else
                 try
-                    #append!(pokes, pokes_data)
                     append!(streaks, streaks_data)
                 catch
-                    #append!(pokes, pokes_data[:, names(pokes)])
                     append!(streaks, streaks_data[:, names(streaks)])
                 end
             end
@@ -38,5 +34,8 @@ function process_data(DataIndex)
     end
     filetosave = joinpath(DataIndex.Saving_path[1],"streaks.csv")
     FileIO.save(filetosave,streaks)
+    licks = Flipping_hf.flatten2(streaks,Symbol.(variable_types[:array_within_streak]))
+    filetosave = joinpath(DataIndex.Saving_path[1],"licks.csv")
+    FileIO.save(filetosave,licks)
     return DataIndex, streaks
 end
